@@ -1,0 +1,2 @@
+# self-managed-eks-project
+ 
