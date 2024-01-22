@@ -1,0 +1,62 @@
+Setting up Ansible to deploy kubernetes
+On the Ansible Server, as Ansible user
+
+#1 mkdir kubernetes
+
+#2 cd kubernetes
+
+#3 vi hosts (Modify with the correct IP addresses when created)
+See Ansible-K8S directory here
+
+#4 Confirm hosts response
+ansible -i hosts all -m ping
+
+#5 Creating a Kubernetes user with Ansible Playbook
+
+#6 vi users.yml
+See Ansible-K8S directory here
+
+#7 Run
+ansible-playbook -i hosts users.yml
+
+#8 Install Kubernetes with Ansible Playbook
+
+#9 vi install-k8s.yml
+See Ansible-K8S directory here
+
+#10 Run
+ansible-playbook -i hosts install-k8s.yml
+
+#11 Creating a Kubernetes Cluster Master Node using Ansible Playbook
+
+#12 vi master.yml
+See Ansible-K8S directory here
+
+#13a. Edit /etc/ansible/ansible.cfg
+vi /etc/ansible/ansible.cfg;
+And uncomment line 280, and change it to 'True'. This enables the ansible user to create the #kubeconfig file.
+
+#13b Run
+ansible-playbook -i hosts master.yml
+ 
+#14. Using SSH, check the master Node
+Recall that kube user was added, so switch
+sudo su - kube
+kubectl get nodes
+This should confirm that the Master node is configured and ready.
+
+#15 Join Worker Nodes to Kubernetes Cluster using Ansible Playbook
+
+#16 vi join-workers.yml
+See Ansible-K8S directory here
+
+#17 Run
+ansible-playbook -i hosts join-workers.yml
+
+#18. Using SSH, check the master Node
+Recall that kube user was added, so switch
+sudo su - kube
+kubectl get nodes
+This should confirm that the Master node and Worker nodes are fully configured and ready.
+
+

@@ -1,0 +1,27 @@
+Using Terraform to provision infrastructure in AWS Cloud
+
+Initial steps:
+a. mkdir terraform-k8s && cd terraform-k8s
+b. Create all the files in the Terraform-K8S directory in this repository
+c. Inspect all the files and edit as necessary
+
+#1. Create a new Terraform workspace
+terraform workspace list           --> will show all the workspace
+terraform workspace show           --> will show the current workspace
+terraform workspace new aws_prod   --> creating new workspace
+
+#2. AWS configure
+aws configure --profile <user_name>
+And fill in the Access key and Secret key ID for the IAM user created.
+The profile appears in .aws/credentials file. This is the profile name you would fill in the provider resource block.
+
+#3. terraform init
+
+#4. terraform validate
+
+#5. terraform plan
+
+#6. terraform apply -auto-approve
+
+#7. terraform destroy -auto-approve
+When you are done!

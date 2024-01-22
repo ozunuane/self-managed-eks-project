@@ -1,0 +1,25 @@
+Install Ansible in a Redhat EC2 Instance
+   - sudo useradd ansible
+   - sudo passwd ansible
+   - echo "ansible  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
+   - sudo su - ansible
+   - Install python
+      sudo yum install python3 -y
+   - Update python alternatives
+      sudo alternatives --set python /usr/bin/python3
+   - Verify Python Version
+      python --version
+   - Install PIP - package manager for python
+      sudo yum -y install python3-pip
+   - Install ansible using PIP
+      pip3 install ansible --user
+   - Verify Ansible version
+      ansible --version
+   - Create ansible folder under /etc
+      sudo mkdir /etc/ansible
+      sudo chown -R ansible:ansible /etc/ansible/
+   - Create ansible.cfg file under /etc/ansible, and paste complete content from below git link.
+      vi /etc/ansible/ansible.cfg     
+      https://github.com/ansible/ansible/blob/stable-2.9/examples/ansible.cfg
+     NB: This file avoids the interactive session when working
+       - At line 71, "host_key_checking = False", uncomment it!

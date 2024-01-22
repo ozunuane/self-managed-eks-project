@@ -1,0 +1,8 @@
+#1 On your command line, run:
+ssh-keygen -f k8skey
+
+This would create public and private key pairs
+It might be necessary to move the keypairs created to your current working directory.
+Locate the public key and copy it.
+Then, paste it in the keypair resource block.
+
